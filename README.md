@@ -29,7 +29,7 @@ source .env/bin/activate
 ```
 pip install -U pip
 pip install 'ansible<5.0'
-pip install git+https://opendev.org/openstack/kolla-ansible@master
+pip install git+https://opendev.org/openstack/kolla-ansible@stable/xena
 ```
 
 ### Deploy
@@ -37,6 +37,7 @@ pip install git+https://opendev.org/openstack/kolla-ansible@master
 ```
 export KOLLA_BASE_DIR=$HOME/HomeInfra-OpenStack
 kolla-ansible -i inventory/all-in-one --configdir $KOLLA_BASE_DIR --passwords $KOLLA_BASE_DIR/passwords.yml --ask-vault-pass bootstrap-servers
+kolla-ansible -i inventory/all-in-one --configdir $KOLLA_BASE_DIR --passwords $KOLLA_BASE_DIR/passwords.yml --ask-vault-pass octavia-certificates
 kolla-ansible -i inventory/all-in-one --configdir $KOLLA_BASE_DIR --passwords $KOLLA_BASE_DIR/passwords.yml --ask-vault-pass prechecks
 kolla-ansible -i inventory/all-in-one --configdir $KOLLA_BASE_DIR --passwords $KOLLA_BASE_DIR/passwords.yml --ask-vault-pass deploy
 ```
